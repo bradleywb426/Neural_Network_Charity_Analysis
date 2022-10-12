@@ -1,47 +1,43 @@
 # Neural Network Charity Analysis
 
+## Overview
 
+Using our developed skills in neural networks and machine learning, we are predicting where Alphabet Soup should make investments. The goal is to create a binary classifier that can successfully predict how successful the investments will be.
 
-------
+## Results
 
-Deliverable 4 Instructions
-For this part of the Challenge, you’ll write a report on the performance of the deep learning model you created for AlphabetSoup.
+### Data Preprocessing
 
-The report should contain the following:
+- What variable(s) are considered the target(s) for your model?
 
-Overview of the analysis: Explain the purpose of this analysis.
+  - Our target variable was the "IS_SUCCESSFUL" column.
 
-Results: Using bulleted lists and images to support your answers, address the following questions.
+- What variable(s) are considered to be the features for your model?
 
-Data Preprocessing
-What variable(s) are considered the target(s) for your model?
-What variable(s) are considered to be the features for your model?
-What variable(s) are neither targets nor features, and should be removed from the input data?
-Compiling, Training, and Evaluating the Model
-How many neurons, layers, and activation functions did you select for your neural network model, and why?
-Were you able to achieve the target model performance?
-What steps did you take to try and increase model performance?
-Summary: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.
+  - Our feature variables were "APPLICATION_TYPE", "AFFILIATION", "CLASSIFICATION", "USE_CASE", "ORGANIZATION",  "SPECIAL_CONSIDERATIONS", "INCOME_AMT", and "ASK_AMT" columns.
 
-Deliverable 4 Requirements
-You will earn a perfect score for Deliverable 4 by completing all requirements below:
+- What variable(s) are neither targets nor features, and should be removed from the input data?
 
-Structure, Organization, and Formatting (6 points)
-The written analysis has the following structure, organization, and formatting:
+  - The "EIN" and "NAME" columns were considered neither a target nor a feature, and were subsequently removed.
 
-There is a title, and there are multiple sections (2 pt)
-Each section has a heading and subheading (2 pt)
-Links to images are working, and code is formatted and displayed correctly (2 pt).
-Analysis (24 points)
-The written analysis has the following:
+### Compiling, Training, and Evaluating the Model
 
-Overview of the loan prediction risk analysis:
+- How many neurons, layers, and activation functions did you select for your neural network model, and why?
 
-The purpose of this analysis is well defined (4 pt)
-Results:
+  - The first neural network used two hidden layers and an output layer. The first hidden layer had 80 neurons and the second had 30 neurons. The hidden layers used the "relu" activation function, and the output layer had the "sigmoid" activation function. These were chosen based on both specifications from the challenge as well as familiarity of these decisions based on the module that I learned Neural Networks from.
 
-There is a bulleted list that answers all six questions (15 pt)
-Summary:
+- Were you able to achieve the target model performance?
 
-There is a summary of the results (2 pt)
-There is a recommendation on using a different model to solve the classification problem, and justification (3 pt)
+- Desired target performance was 75% accuracy or higher, and the original model performed at 72.97% accuracy while an optimized model acheived 73.14% accuracy.
+
+- What steps did you take to try and increase model performance?
+
+  - In an attempt to increase model performance, the first set of changes were binning the ASK_AMT column using the INCOME_AMT column as a reference to reduce noise, and changing the second activation function to "sigmoid".
+
+  - The second set of changes was changing the number of neurons to the hidden layers, making the totals 100 neurons in the first layer and 40 in the second layer.
+  
+  - The third set of changes was adding a third hidden layer that used the "sigmoid" function and had 15 neurons. It also changed the first activation function from "relu" to "tanh"
+
+## Summary
+
+Overall, the current model is able to classify/predict each point around 73% of the time. The model gained accuracy with hidden layers and neurons, and could further gain accuracy through more specific adaptations of the model. Another route to optimize the predictions/classifications is to pursue different models to see where they fail and succeed. A Random Forest model could be particularly helpful to look intoas they are good for classification problems.
